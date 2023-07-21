@@ -4,11 +4,7 @@ import Form from "./components/Form";
 
 function App() {
   
-  const [tasks, setTasks] = useState([
-    {id: 0, title: "Mleko", isCompleted: true},
-    {id: 1, title: "Parówki", isCompleted: false},
-    {id: 2, title: "Chleb", isCompleted: false},
-  ]);
+  const [tasks, setTasks] = useState([]);
 
   const toggleCompleteTask = id => {
     setTasks(tasks.map(task => {
