@@ -1,10 +1,17 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import TaskList from "./components/TaskList";
 import Form from "./components/Form";
 
 function App() {
   
-  const [tasks, setTasks] = useState([]);
+  const [tasks, setTasks] = useState(() => {
+    let localTasks = localStorage.getItem('tasks');
+    return localTasks ? JSON.parse(localTasks) : []
+  });
+
+  useEffect(() => {
+    localStorage.setItem('tasks', JSON.stringify(tasks));
+  }, [tasks]);
 
   const toggleCompleteTask = id => {
     setTasks(tasks.map(task => {
