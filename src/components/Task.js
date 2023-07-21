@@ -1,11 +1,14 @@
 import { React } from 'react'
 
-const Task = ({task, toggleCompleteTask}) => {
+const Task = ({task, toggleCompleteTask, deleteTask}) => {
     return (
         <li
             style={{textDecoration: task.isCompleted ? "line-through" : ""}}
-            onClick={() => toggleCompleteTask(task.id)}
-        >{task.title}</li>
+        >
+            {task.title}
+            <button onClick={() => toggleCompleteTask(task.id)}>️⭕️</button>
+            <button onClick={() => deleteTask(task.id)}>❌</button>
+        </li>
     );
 }
 

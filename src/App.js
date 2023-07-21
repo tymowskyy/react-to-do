@@ -13,11 +13,15 @@ function App() {
       if (task.id === id)
         task.isCompleted = !task.isCompleted;
       return task;
-    }))
+    }));
+  }
+
+  const deleteTask = id => {
+    setTasks(tasks.filter(task => task.id !== id));
   }
 
   return (
-    <TaskList tasks={tasks} toggleCompleteTask={toggleCompleteTask} />
+    <TaskList tasks={tasks} toggleCompleteTask={toggleCompleteTask} deleteTask={deleteTask} />
   );
 }
 
