@@ -1,7 +1,9 @@
 import { useState } from "react";
 import TaskList from "./components/TaskList";
+import Form from "./components/Form";
 
 function App() {
+  
   const [tasks, setTasks] = useState([
     {id: 0, title: "Mleko", isCompleted: true},
     {id: 1, title: "Parówki", isCompleted: false},
@@ -20,8 +22,21 @@ function App() {
     setTasks(tasks.filter(task => task.id !== id));
   }
 
+  const addTask = title => {
+    setTasks(tasks.concat([
+      {
+        id: Math.floor(Math.random()*10000),
+        title: title,
+        isCompleted: false
+      }
+    ]));
+  }
+
   return (
+    <>
+    <Form addTask={addTask}></Form>
     <TaskList tasks={tasks} toggleCompleteTask={toggleCompleteTask} deleteTask={deleteTask} />
+    </>
   );
 }
 
