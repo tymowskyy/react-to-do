@@ -1,13 +1,12 @@
 import React from "react";
+import Task from "./Task";
 
-const TaskList = ({tasks}) => {
+const TaskList = ({tasks, toggleCompleteTask}) => {
     return (
         <ul>
-            {tasks.map(task => (
-                <li style={{textDecoration: task.isCompleted ? "line-through" : ""}}>{task.title}</li>
-            ))}
+            {tasks.map(task => <Task task={task} toggleCompleteTask={toggleCompleteTask} />)}
         </ul>
-    )
+    );
 }
 
 export default TaskList;
