@@ -38,21 +38,19 @@ function App() {
         task.isCompleted = !task.isCompleted;
       return task;
     }));
-  };
+  }
 
   const deleteTask = id => {
     setTasks(tasks.filter(task => task.id !== id));
-  };
+  }
 
   const addTask = title => {
-    setTasks(tasks.concat([
-      {
-        id: Math.floor(Math.random()*10000),
-        title: title,
-        isCompleted: false
-      }
-    ]));
-  };
+    setTasks(tasks.concat([{
+      id: Math.floor(Math.random()*10000),
+      title: title,
+      isCompleted: false
+    }]));
+  }
 
   return (
     <>
