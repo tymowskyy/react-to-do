@@ -6,12 +6,31 @@ function App() {
   
   const [tasks, setTasks] = useState(() => {
     let localTasks = localStorage.getItem('tasks');
-    return localTasks ? JSON.parse(localTasks) : []
+    return localTasks ? JSON.parse(localTasks) : [];
   });
+  const [filter, setFilter] = useState(() => {
+    let localFilter = localStorage.getItem('filter');
+    return localFilter ? JSON.parse(localFilter) : [];
+  });
+
+  const [filteredTasks, setFilteredTasks] = useState([]);
 
   useEffect(() => {
     localStorage.setItem('tasks', JSON.stringify(tasks));
   }, [tasks]);
+
+  useEffect(() => {
+    localStorage.setItem('filter', JSON.stringify(filter));
+  }, [filter]);
+
+  useEffect(() => {
+    if (filter === 'all')
+      setFilteredTasks(tasks);
+    else
+      setFilteredTasks(tasks.filter(
+        task => task.isCompleted === (filter === 'completed')
+      ));
+  }, [tasks, filter]);
 
   const toggleCompleteTask = id => {
     setTasks(tasks.map(task => {
@@ -19,11 +38,11 @@ function App() {
         task.isCompleted = !task.isCompleted;
       return task;
     }));
-  }
+  };
 
   const deleteTask = id => {
     setTasks(tasks.filter(task => task.id !== id));
-  }
+  };
 
   const addTask = title => {
     setTasks(tasks.concat([
@@ -33,12 +52,12 @@ function App() {
         isCompleted: false
       }
     ]));
-  }
+  };
 
   return (
     <>
-    <Form addTask={addTask}></Form>
-    <TaskList tasks={tasks} toggleCompleteTask={toggleCompleteTask} deleteTask={deleteTask} />
+    <Form addTask={addTask} filter={filter} setFilter={setFilter}></Form>
+    <TaskList tasks={filteredTasks} toggleCompleteTask={toggleCompleteTask} deleteTask={deleteTask} />
     </>
   );
 }

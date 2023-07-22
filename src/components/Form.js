@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const Form = ({ addTask }) => {
+const Form = ({ addTask, filter, setFilter }) => {
 
   const [inputText, setInputText] = useState("");
 
@@ -13,6 +13,11 @@ const Form = ({ addTask }) => {
           setInputText("");
         }
       }}>Add</button>
+      <select defaultValue={filter} onChange={event => setFilter(event.target.value)}>
+        <option value='all'>All</option>
+        <option value='completed'>Completed</option>
+        <option value='incompleted'>Incompleted</option>
+      </select>
     </>
   )
 }
