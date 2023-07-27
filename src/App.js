@@ -53,10 +53,10 @@ function App() {
   }
 
   return (
-    <>
+    <div className="flex flex-col min-h-screen bg-gray-100">
     <Form addTask={addTask} filter={filter} setFilter={setFilter}></Form>
     <TaskList tasks={filteredTasks} toggleCompleteTask={toggleCompleteTask} deleteTask={deleteTask} />
-    </>
+    </div>
   );
 }
 
