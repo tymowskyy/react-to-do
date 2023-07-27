@@ -53,7 +53,7 @@ function App() {
   }
 
   return (
-    <div className="flex flex-col min-h-screen bg-background text-text">
+    <div className="flex flex-col items-center min-h-screen bg-background text-text">
     <Form addTask={addTask} filter={filter} setFilter={setFilter}></Form>
     <TaskList tasks={filteredTasks} toggleCompleteTask={toggleCompleteTask} deleteTask={deleteTask} />
     </div>
