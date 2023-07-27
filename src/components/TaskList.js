@@ -2,7 +2,7 @@ import React from "react";
 import Task from "./Task";
 
 const TaskList = ({ tasks, toggleCompleteTask, deleteTask }) => (
-  <ul className="w-4/12 mt-6 bg-background-light border-2 border-primary rounded-md shadow-md
+  <ul className="w-11/12 md:w-8/12 lg:w-6/12 mt-6 bg-background-light border-2 border-primary rounded-md shadow-md
   p-4 list-none space-y-3">
     {tasks.map(task =>
       <Task

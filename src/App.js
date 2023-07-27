@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import Header from "./components/Header";
 import TaskList from "./components/TaskList";
 import Form from "./components/Form";
 
@@ -54,8 +55,9 @@ function App() {
 
   return (
     <div className="flex flex-col items-center min-h-screen bg-background text-text">
-    <Form addTask={addTask} filter={filter} setFilter={setFilter}></Form>
-    <TaskList tasks={filteredTasks} toggleCompleteTask={toggleCompleteTask} deleteTask={deleteTask} />
+      <Header />
+      <Form addTask={addTask} filter={filter} setFilter={setFilter}></Form>
+      <TaskList tasks={filteredTasks} toggleCompleteTask={toggleCompleteTask} deleteTask={deleteTask} />
     </div>
   );
 }
