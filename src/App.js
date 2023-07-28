@@ -11,7 +11,7 @@ function App() {
   });
   const [filter, setFilter] = useState(() => {
     let localFilter = localStorage.getItem('filter');
-    return localFilter ? JSON.parse(localFilter) : [];
+    return localFilter ? JSON.parse(localFilter) : 'all';
   });
 
   const [filteredTasks, setFilteredTasks] = useState([]);
